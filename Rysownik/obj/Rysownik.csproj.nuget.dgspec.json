@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Kurs\\Rysownik\\Rysownik.csproj": {}
+    "D:\\Kurs\\GrafikaKomputerowa\\Rysownik\\Rysownik.csproj": {}
   },
   "projects": {
-    "D:\\Kurs\\Rysownik\\Rysownik.csproj": {
+    "D:\\Kurs\\GrafikaKomputerowa\\Rysownik\\Rysownik.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Kurs\\Rysownik\\Rysownik.csproj",
+        "projectUniqueName": "D:\\Kurs\\GrafikaKomputerowa\\Rysownik\\Rysownik.csproj",
         "projectName": "Rysownik",
-        "projectPath": "D:\\Kurs\\Rysownik\\Rysownik.csproj",
+        "projectPath": "D:\\Kurs\\GrafikaKomputerowa\\Rysownik\\Rysownik.csproj",
         "packagesPath": "C:\\Users\\Mafisto CHEF\\.nuget\\packages\\",
-        "outputPath": "D:\\Kurs\\Rysownik\\obj\\",
+        "outputPath": "D:\\Kurs\\GrafikaKomputerowa\\Rysownik\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "F:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
