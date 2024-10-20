@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rysownik", "Rysownik.csproj", "{F2E31BD8-6CA9-4BF0-8211-D347D1FB5DBE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F2E31BD8-6CA9-4BF0-8211-D347D1FB5DBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2E31BD8-6CA9-4BF0-8211-D347D1FB5DBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2E31BD8-6CA9-4BF0-8211-D347D1FB5DBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2E31BD8-6CA9-4BF0-8211-D347D1FB5DBE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {97076B9F-19AC-4D8A-BC24-388F0ABD4AB5}
+	EndGlobalSection
+EndGlobal
