@@ -12,9 +12,8 @@
       }
     ],
     "additionalProbingPaths": [
-      "C:\\Users\\Mafisto CHEF\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\Mafisto CHEF\\.nuget\\packages",
-      "F:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      "C:\\Users\\ACEREK\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\ACEREK\\.nuget\\packages"
     ],
     "configProperties": {
       "System.Runtime.Serialization.EnableUnsafeBinaryFormatterSerialization": true,

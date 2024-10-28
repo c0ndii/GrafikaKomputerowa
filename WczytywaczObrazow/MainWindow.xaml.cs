@@ -208,7 +208,7 @@ namespace WczytywaczObrazow
 
                     while (true)
                     {
-                        char[] buffer = new char[4096];
+                        char[] buffer = new char[8192];
                         int bytesRead = reader.ReadBlock(buffer, 0, buffer.Length);
 
                         if (bytesRead == 0)
@@ -219,7 +219,7 @@ namespace WczytywaczObrazow
                         int lastNewlineIndex = -1;
                         string dataBlock = tmp + new string(buffer, 0, buffer.Length);
 
-                        if (Array.LastIndexOf(buffer, '\n') != 4095)
+                        if (Array.LastIndexOf(buffer, '\n') != 8191)
                         {
                             lastNewlineIndex = Array.LastIndexOf(buffer, '\n');
                             dataBlock = tmp + new string(buffer, 0, lastNewlineIndex);
@@ -251,8 +251,8 @@ namespace WczytywaczObrazow
                                 string value;
                                 if (maxValue > 255)
                                 {
-                                    double scalingFactor = 255.0 / maxValue;
-                                    value = ((int)(int.Parse(token) * scalingFactor)).ToString();
+                                    double scale = 255.0 / maxValue;
+                                    value = ((int)(int.Parse(token) * scale)).ToString();
                                 }
                                 else
                                 {
@@ -329,11 +329,11 @@ namespace WczytywaczObrazow
                     byte[] allPixels = new byte[dataSize];
                     int bytesRead = 0;
 
-                    char[] buffer = new char[4096];
+                    char[] buffer = new char[8192];
 
                     while (bytesRead < dataSize)
                     {
-                        int bytesToRead = Math.Min(dataSize - bytesRead, 4096);
+                        int bytesToRead = Math.Min(dataSize - bytesRead, 8192);
                         int bytesReadThisBlock = reader.Read(allPixels, bytesRead, bytesToRead);
                         if (bytesReadThisBlock == 0)
                         {
