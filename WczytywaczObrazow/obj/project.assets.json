@@ -8,24 +8,19 @@
     "net8.0-windows7.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Mafisto CHEF\\.nuget\\packages\\": {},
-    "F:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\ACEREK\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Kurs\\GrafikaKomputerowa\\WczytywaczObrazow\\WczytywaczObrazow.csproj",
+      "projectUniqueName": "C:\\Users\\ACEREK\\Documents\\GitHub\\GrafikaKomputerowa\\WczytywaczObrazow\\WczytywaczObrazow.csproj",
       "projectName": "WczytywaczObrazow",
-      "projectPath": "D:\\Kurs\\GrafikaKomputerowa\\WczytywaczObrazow\\WczytywaczObrazow.csproj",
-      "packagesPath": "C:\\Users\\Mafisto CHEF\\.nuget\\packages\\",
-      "outputPath": "D:\\Kurs\\GrafikaKomputerowa\\WczytywaczObrazow\\obj\\",
+      "projectPath": "C:\\Users\\ACEREK\\Documents\\GitHub\\GrafikaKomputerowa\\WczytywaczObrazow\\WczytywaczObrazow.csproj",
+      "packagesPath": "C:\\Users\\ACEREK\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ACEREK\\Documents\\GitHub\\GrafikaKomputerowa\\WczytywaczObrazow\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "F:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Mafisto CHEF\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\ACEREK\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
