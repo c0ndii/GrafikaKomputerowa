@@ -1,0 +1,14 @@
+﻿<Window x:Class="WczytywaczObrazow.ChooseGrayScale"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WczytywaczObrazow"
+        mc:Ignorable="d"
+        Title="ChooseGrayScale" Height="100" Width="200">
+    <StackPanel>
+        <TextBlock Text="Wybierz sposób" />
+        <Button Content="Wersja nr 1" Click="NumberOne" />
+        <Button Content="Wersja nr 2" Click="NumberTwo" />
+    </StackPanel>
+</Window>
