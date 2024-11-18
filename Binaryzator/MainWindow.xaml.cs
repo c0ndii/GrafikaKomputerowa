@@ -7,10 +7,10 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Drawing;
 
 namespace WczytywaczObrazow
 {
@@ -99,51 +99,110 @@ namespace WczytywaczObrazow
 
         private void RozszerzHistogram()
         {
-            int[] grayscalePixels = new int[PixelsAsColors.Count];
+            int minR = 255, maxR = 0;
+            int minG = 255, maxG = 0;
+            int minB = 255, maxB = 0;
 
-            for (int i = 0; i < PixelsAsColors.Count; i++)
+            foreach (var pixel in PixelsAsColors)
             {
-                grayscalePixels[i] = ((PixelsAsColors[i].R + PixelsAsColors[i].B + PixelsAsColors[i].G) / 3);
+                minR = Math.Min(minR, pixel.R);
+                maxR = Math.Max(maxR, pixel.R);
+                minG = Math.Min(minG, pixel.G);
+                maxG = Math.Max(maxG, pixel.G);
+                minB = Math.Min(minB, pixel.B);
+                maxB = Math.Max(maxB, pixel.B);
             }
 
-            var min = grayscalePixels.Min();
-            var max = grayscalePixels.Max();
+            int diffR = maxR - minR > 0 ? maxR - minR : 1;
+            int diffG = maxG - minG > 0 ? maxG - minG : 1;
+            int diffB = maxB - minB > 0 ? maxB - minB : 1;
 
-            for (int i = 0; i < grayscalePixels.Length; i++)
+            byte[] pixelsArray = new byte[Pixels.Length];
+            for (int i = 0; i < Pixels.Length; i += 4)
             {
-                grayscalePixels[i] = (int)(255 * (double)(grayscalePixels[i] - min) / (max - min));
+                byte b = Pixels[i];
+                byte g = Pixels[i + 1];
+                byte r = Pixels[i + 2];
+
+                byte newR = (byte)((r - minR) * 255 / diffR);
+                byte newG = (byte)((g - minG) * 255 / diffG);
+                byte newB = (byte)((b - minB) * 255 / diffB);
+
+
+                pixelsArray[i] = newB;
+                pixelsArray[i + 1] = newG;
+                pixelsArray[i + 2] = newR;
+                pixelsArray[i + 3] = 255; 
             }
-            ImageFromBytes(PixelsArrayToDrawableArray(grayscalePixels));
+
+            ImageFromBytes(pixelsArray);
         }
 
         private void WyrownajHistogram()
         {
-            int[] grayscalePixels = CalculateGrayPixels();
-            int numberOfPixels = Pixels.Length;
+            int[] histR = new int[256];
+            int[] histG = new int[256];
+            int[] histB = new int[256];
 
-            int[] cdf = new int[256];
-            cdf[0] = grayscalePixels[0];
-            for (int i = 1; i < 256; i++)
+            foreach (var color in PixelsAsColors)
             {
-                cdf[i] = cdf[i - 1] + grayscalePixels[i];
+                histR[color.R]++;
+                histG[color.G]++;
+                histB[color.B]++;
             }
 
-            var min = cdf.Min();
-            var max = cdf.Max();
+            int[] cdfR = CalculateCDF(histR);
+            int[] cdfG = CalculateCDF(histG);
+            int[] cdfB = CalculateCDF(histB);
 
-            byte[] equalizedPixels = new byte[numberOfPixels];
-            for (int i = 0; i < numberOfPixels; i += 4)
+            int totalPixels = PixelsAsColors.Count;
+
+            int[] normalizedR = NormalizeCDF(cdfR, totalPixels);
+            int[] normalizedG = NormalizeCDF(cdfG, totalPixels);
+            int[] normalizedB = NormalizeCDF(cdfB, totalPixels);
+
+            byte[] pixelsArray = new byte[Pixels.Length];
+
+            for (int i = 0; i < Pixels.Length; i += 4)
             {
-                int gray = (Pixels[i] + Pixels[i + 1] + Pixels[i + 2]) / 3;
-                int newGray = (int)(255.0 * (cdf[gray] - min) / (max - min));
-                equalizedPixels[i] = (byte)newGray;
-                equalizedPixels[i + 1] = (byte)newGray;
-                equalizedPixels[i + 2] = (byte)newGray;
-                equalizedPixels[i + 3] = 255;
+                byte b = Pixels[i];
+                byte g = Pixels[i + 1]; 
+                byte r = Pixels[i + 2];
+
+                pixelsArray[i] = (byte)normalizedB[b]; 
+                pixelsArray[i + 1] = (byte)normalizedG[g]; 
+                pixelsArray[i + 2] = (byte)normalizedR[r]; 
+                pixelsArray[i + 3] = 255; 
             }
-            ImageFromBytes(equalizedPixels);
-            SetColorsFromPixelsArray(equalizedPixels);
+
+            ImageFromBytes(pixelsArray);
         }
+
+        private int[] CalculateCDF(int[] histogram)
+        {
+            int[] cdf = new int[histogram.Length];
+            cdf[0] = histogram[0];
+            for (int i = 1; i < histogram.Length; i++)
+            {
+                cdf[i] = cdf[i - 1] + histogram[i];
+            }
+            return cdf;
+        }
+
+        private int[] NormalizeCDF(int[] cdf, int totalPixels)
+        {
+            int cdfMin = cdf.First(value => value > 0); // Znajdź pierwszą niezerową wartość
+            int[] normalized = new int[cdf.Length];
+
+            for (int i = 0; i < cdf.Length; i++)
+            {
+                normalized[i] = (int)Math.Round((double)(cdf[i] - cdfMin) / (totalPixels - cdfMin) * 255);
+                normalized[i] = Math.Clamp(normalized[i], 0, 255); // Upewnij się, że wartości mieszczą się w zakresie
+            }
+
+            return normalized;
+        }
+
 
         private void Manual(object sender, RoutedEventArgs e)
         {
@@ -239,21 +298,6 @@ namespace WczytywaczObrazow
             return binarized;
         }
 
-        private byte[] PixelsArrayToDrawableArray(int[] array)
-        {
-            byte[] bytes = new byte[Pixels.Length];
-            int index = 0;
-            for (int i = 0; i < Pixels.Length; i += 4)
-            {
-                bytes[i] = (byte)array[index];
-                bytes[i + 1] = (byte)array[index];
-                bytes[i + 2] = (byte)array[index];
-                bytes[i + 3] = 255;
-                index++;
-            }
-            return bytes;
-        }
-
         private int[] CalculateGrayPixels()
         {
             int[] grayscaleBytes = new int[256];
@@ -270,7 +314,7 @@ namespace WczytywaczObrazow
         private void ImageFromBytes(byte[] bytes)
         {
             processedImage.WritePixels(new Int32Rect(0, 0, Width, Height), bytes, stride, 0);
-            loadedImage.Source = processedImage;
+            loadedImage.Source = processedImage; 
         }
 
         private void SetColorsFromPixelsArray()
@@ -279,15 +323,6 @@ namespace WczytywaczObrazow
             for (int i = 0; i + 3 < Pixels.Length; i += 4)
             {
                 PixelsAsColors.Add(Color.FromArgb(255, Pixels[i + 2], Pixels[i + 1], Pixels[i]));
-            }
-        }
-
-        private void SetColorsFromPixelsArray(byte[] array)
-        {
-            PixelsAsColors.Clear();
-            for (int i = 0; i + 3 < array.Length; i += 4)
-            {
-                PixelsAsColors.Add(Color.FromArgb(255, array[i + 2], array[i + 1], array[i]));
             }
         }
 
