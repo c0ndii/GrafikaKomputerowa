@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Kurs\\GrafikaKomputerowa\\Binaryzator\\WczytywaczObrazow.csproj": {}
+    "C:\\Users\\ACEREK\\Documents\\GitHub\\GrafikaKomputerowa\\Binaryzator\\WczytywaczObrazow.csproj": {}
   },
   "projects": {
-    "D:\\Kurs\\GrafikaKomputerowa\\Binaryzator\\WczytywaczObrazow.csproj": {
+    "C:\\Users\\ACEREK\\Documents\\GitHub\\GrafikaKomputerowa\\Binaryzator\\WczytywaczObrazow.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Kurs\\GrafikaKomputerowa\\Binaryzator\\WczytywaczObrazow.csproj",
+        "projectUniqueName": "C:\\Users\\ACEREK\\Documents\\GitHub\\GrafikaKomputerowa\\Binaryzator\\WczytywaczObrazow.csproj",
         "projectName": "WczytywaczObrazow",
-        "projectPath": "D:\\Kurs\\GrafikaKomputerowa\\Binaryzator\\WczytywaczObrazow.csproj",
-        "packagesPath": "C:\\Users\\Mafisto CHEF\\.nuget\\packages\\",
-        "outputPath": "D:\\Kurs\\GrafikaKomputerowa\\Binaryzator\\obj\\",
+        "projectPath": "C:\\Users\\ACEREK\\Documents\\GitHub\\GrafikaKomputerowa\\Binaryzator\\WczytywaczObrazow.csproj",
+        "packagesPath": "C:\\Users\\ACEREK\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ACEREK\\Documents\\GitHub\\GrafikaKomputerowa\\Binaryzator\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "F:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Mafisto CHEF\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\ACEREK\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
