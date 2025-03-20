@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "dgSpecHash": "yahonD662Z3S/5rrrM8WpHnSmyZEDrSsiM/ZeQfCaeQ5Hcms8YwjRkdD+HFqjnKt/xsGhjXfsGDISkHRuIZ+Vg==",
+  "success": true,
+  "projectFilePath": "D:\\Kurs\\GrafikaKomputerowa\\Analizator\\WczytywaczObrazow.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Mafisto CHEF\\.nuget\\packages\\helixtoolkit.wpf\\2.25.0\\helixtoolkit.wpf.2.25.0.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Pakiet „HelixToolkit.Wpf 2.25.0” został przywrócony przy użyciu elementu „.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1” zamiast platformy docelowej projektu „net8.0-windows7.0”. Ten pakiet może nie być w pełni kompatybilny z Twoim projektem.",
+      "libraryId": "HelixToolkit.Wpf",
+      "targetGraphs": [
+        "net8.0-windows7.0"
+      ]
+    }
+  ]
+}
